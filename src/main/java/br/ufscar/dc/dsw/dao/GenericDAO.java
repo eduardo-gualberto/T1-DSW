@@ -21,6 +21,8 @@ public abstract class GenericDAO<T> {
 	public abstract void delete(Long id);
 	
 	public static void close() {
-		emf.close();
+		if(emf.isOpen()) {
+			emf.close();
+		}
 	}
 }

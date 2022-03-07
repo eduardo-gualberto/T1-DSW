@@ -14,4 +14,8 @@
 	Cliente c = new Cliente(nome, cpf, email, senha, sexo, telefone, dataNasc);
 	cDAO.create(c);
 %>
-<jsp:forward page="home.jsp"></jsp:forward>
+<jsp:forward page="home.jsp">
+	<jsp:param name="email" value="<%=email %>"></jsp:param>
+	<jsp:param name="type" value="C"></jsp:param>
+	<jsp:param name="admin" value="F"></jsp:param>
+</jsp:forward>

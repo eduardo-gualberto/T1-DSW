@@ -17,12 +17,12 @@
 	List<Profissional> p = pDAO.findByEmailProfissional(usuario);
 	if(!c.isEmpty()){
 		type = "C";
-	} else if(!p.isEmpty()){
+	} if(!p.isEmpty()){
 		type = "P";
 	} else {
 		type = "A";
 	}
-	
+
 	if(LogInController.auth(usuario, senha) == 2) {
 %>
 		<jsp:forward page="home.jsp">

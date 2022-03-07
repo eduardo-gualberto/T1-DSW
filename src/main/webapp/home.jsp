@@ -23,6 +23,6 @@
 
 <a href="listarProfissionais.jsp">Listar todos os profissionais cadastrados</a><br/><br/>
 <% if(type.equals("C")){ %>
-<a href="#">Agendar um horario com um profissional</a><br/><br/>
+<a href="agendarConsulta.jsp">Agendar um horario com um profissional</a><br/><br/>
 <%} %>
-<a href="#">Listar meus horários de consulta</a><br/>
+<a href="listarConsultas.jsp">Listar meus horários de consulta</a><br/>
