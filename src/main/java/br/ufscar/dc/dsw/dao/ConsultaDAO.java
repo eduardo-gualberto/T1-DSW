@@ -35,6 +35,9 @@ public class ConsultaDAO extends GenericDAO<Consulta>{
 
 	@Override
 	public void create(Consulta t) {
+		if(!this.validarData(t)) {
+			return;
+		}
 		EntityManager em = this.getEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
@@ -78,4 +81,23 @@ public class ConsultaDAO extends GenericDAO<Consulta>{
         return lista;
 	}
 	
+	private boolean validarData(Consulta t) {
+		String data = this.data_hora(t);
+		List<Consulta> consultas = this.findAll();
+		for(Consulta curr: consultas) {
+			String dataCurr = this.data_hora(curr);
+			if(data.equals(dataCurr)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private String data_hora(Consulta t) {
+		//Partindo do formato de data = "DD/MM/AAAA hh:mm"
+		int hora_offset = 13;
+		String data_raw = t.getData_hora();
+		String data = data_raw.substring(0, hora_offset + 1);
+		return data;
+	}
 }
